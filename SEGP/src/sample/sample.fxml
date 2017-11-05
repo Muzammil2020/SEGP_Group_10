@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <top>
+      <HBox BorderPane.alignment="CENTER">
+         <children>
+            <MenuBar prefHeight="25.0" prefWidth="530.0">
+              <menus>
+                <Menu mnemonicParsing="false" text="Home" />
+                <Menu mnemonicParsing="false" text="Help">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="About" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+            <Region HBox.hgrow="ALWAYS" />
+            <MenuBar prefHeight="25.0" prefWidth="78.0">
+              <menus>
+                <Menu mnemonicParsing="false" text="Logout" />
+              </menus>
+            </MenuBar>
+         </children>
+      </HBox>
+   </top>
+   <bottom>
+      <HBox prefHeight="51.0" prefWidth="600.0" BorderPane.alignment="CENTER" />
+   </bottom>
+   <center>
+      <Pane prefHeight="324.0" prefWidth="424.0" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+         <children>
+            <Pane fx:id="homePane" prefHeight="328.0" prefWidth="600.0" visible="false">
+               <children>
+                  <GridPane alignment="BASELINE_CENTER" prefHeight="324.0" prefWidth="600.0">
+                     <children>
+                        <Button fx:id="newGroupButton1" mnemonicParsing="false" onAction="#newGroupButtonClicked" prefHeight="25.0" prefWidth="130.0" text="New Group">
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin>
+                        </Button>
+                        <Button mnemonicParsing="false" onAction="#homeAddStudentButtonClicked" prefHeight="25.0" prefWidth="130.0" text="Add Student" GridPane.rowIndex="1" />
+                        <Button mnemonicParsing="false" onAction="#editStudentButtonClicked" prefHeight="25.0" prefWidth="130.0" text="Edit Student" GridPane.rowIndex="2" />
+                        <Button mnemonicParsing="false" onAction="#homeAddTutorButtonClicked" prefHeight="25.0" prefWidth="130.0" text="Add Tutor" GridPane.rowIndex="3" />
+                        <Button mnemonicParsing="false" onAction="#homeEditTutorButtonClicked" prefHeight="25.0" prefWidth="130.0" text="Edit Tutor" GridPane.rowIndex="4" />
+                        <Button mnemonicParsing="false" onAction="#displayStudentsListButtonClicked" prefHeight="25.0" prefWidth="130.0" text="Display Students List" GridPane.columnIndex="1" />
+                        <Button mnemonicParsing="false" onAction="#displayTutorListButtonClicked" prefHeight="25.0" prefWidth="130.0" text="Display Tutor List" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Button mnemonicParsing="false" onAction="#displayAGroupButtonClicked" prefHeight="25.0" prefWidth="130.0" text="Display Group" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="130.0" text="Display All Groups" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Button fx:id="uploadFile" mnemonicParsing="false" onAction="#uploadFileButtonClicked" prefHeight="25.0" prefWidth="130.0" text="Upload File" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                     </children>
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="192.0" minWidth="10.0" prefWidth="181.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="289.0" minWidth="10.0" prefWidth="159.0" />
+                     </columnConstraints>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets left="140.0" right="130.0" />
+                     </padding>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                  </GridPane>
+               </children>
+            </Pane>
+            <Pane fx:id="uploadFilePane" prefHeight="325.0" prefWidth="600.0" visible="false">
+               <children>
+                  <RadioButton fx:id="studentRadio" layoutX="96.0" layoutY="69.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="103.0" text="Student File">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="studentOrTutor" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <RadioButton fx:id="tutorRadio" accessibleText="tutorRadio" layoutX="210.0" layoutY="69.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="103.0" text="Tutor File" toggleGroup="$studentOrTutor" />
+                  <TextField fx:id="fileChooserTextFile" layoutX="96.0" layoutY="107.0" prefHeight="25.0" prefWidth="280.0" />
+                  <Button fx:id="browseButton" layoutX="376.0" layoutY="107.0" mnemonicParsing="false" onAction="#onBrowseButtonClicked" text="Browse" />
+                  <Button fx:id="uploadButton" layoutX="316.0" layoutY="159.0" mnemonicParsing="false" onAction="#uploadButtonClicked" prefHeight="25.0" prefWidth="60.0" text="Upload" />
+                  <Button fx:id="cancelUploadButton" layoutX="237.0" layoutY="159.0" mnemonicParsing="false" onAction="#cancelUploadButtonClicked" prefHeight="25.0" prefWidth="60.0" text="Cancel" />
+               </children></Pane>
+            <Pane fx:id="addStudentPane" prefHeight="324.0" prefWidth="600.0" visible="false">
+               <children>
+                  <GridPane layoutX="122.0" prefHeight="232.0" prefWidth="274.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="179.0" minWidth="10.0" prefWidth="78.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="295.0" minWidth="10.0" prefWidth="196.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label prefHeight="42.0" prefWidth="79.0" text="UoB :" textAlignment="CENTER" />
+                        <Label text="Name :" GridPane.rowIndex="1" />
+                        <Label text="Programme :" GridPane.rowIndex="2" />
+                        <Label text="E-mail :" GridPane.rowIndex="3" />
+                        <Label text="Year :" GridPane.rowIndex="4" />
+                        <TextField fx:id="studentUoB" GridPane.columnIndex="1" />
+                        <TextField fx:id="studentName" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <TextField fx:id="studentProgramme" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <TextField fx:id="studentEmail" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <TextField fx:id="studentYear" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                     </children>
+                  </GridPane>
+                  <Button fx:id="addStudentButton" layoutX="306.0" layoutY="243.0" mnemonicParsing="false" onAction="#addStudentButtonClicked" prefHeight="25.0" prefWidth="90.0" text="Add Student" />
+                  <Button layoutX="201.0" layoutY="243.0" mnemonicParsing="false" onAction="#cancelAddStudentClicked" prefHeight="25.0" prefWidth="90.0" text="Cancel" />
+               </children>
+            </Pane>
+            <Pane fx:id="editStudentPane2" prefHeight="324.0" prefWidth="600.0" visible="false">
+               <children>
+                  <GridPane layoutX="122.0" prefHeight="232.0" prefWidth="274.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="179.0" minWidth="10.0" prefWidth="78.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="295.0" minWidth="10.0" prefWidth="196.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Label prefHeight="42.0" prefWidth="79.0" text="UoB :" textAlignment="CENTER" />
+                        <Label text="Name :" GridPane.rowIndex="1" />
+                        <Label text="Programme :" GridPane.rowIndex="2" />
+                        <Label text="E-mail :" GridPane.rowIndex="3" />
+                        <Label text="Year :" GridPane.rowIndex="4" />
+                        <TextField fx:id="editStudentUoB" GridPane.columnIndex="1" />
+                        <TextField fx:id="editStudentName" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <TextField fx:id="editStudentProgramme" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <TextField fx:id="editStudentEmail" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <TextField fx:id="editStudentYear" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                     </children>
+                  </GridPane>
+                  <Button fx:id="addStudentButton1" layoutX="306.0" layoutY="243.0" mnemonicParsing="false" onAction="#updateStudentButtonClicked" prefHeight="25.0" prefWidth="90.0" text="Update Student" />
+                  <Button layoutX="201.0" layoutY="243.0" mnemonicParsing="false" onAction="#cancelEditPaneTwoButtonClicked" prefHeight="25.0" prefWidth="90.0" text="Cancel" />
+               </children>
+            </Pane>
+            <Pane fx:id="editStudentPane" prefHeight="324.0" prefWidth="600.0" visible="false">
+               <children>
+                  <Label layoutX="190.0" layoutY="50.0" text="UoB :" />
+                  <TextField fx:id="editUoB" layoutX="231.0" layoutY="46.0" prefWidth="163.0" />
+                  <Button layoutX="330.0" layoutY="85.0" mnemonicParsing="false" onAction="#editContinueButtonClicked" prefWidth="65.0" text="Continue" />
+                  <Button layoutX="250.0" layoutY="85.0" mnemonicParsing="false" onAction="#cancelEditPaneOneButtonClicked" prefWidth="65.0" text="Cancel" />
+               </children>
+            </Pane>
+            <Pane fx:id="addTutorPane" prefHeight="327.0" prefWidth="600.0" visible="false">
+               <children>
+                  <GridPane layoutX="168.0" layoutY="32.0" prefHeight="218.0" prefWidth="314.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="118.0" minWidth="10.0" prefWidth="74.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="225.0" minWidth="10.0" prefWidth="225.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label text="Tutor Id :" />
+                        <Label text="Name :" GridPane.rowIndex="1" />
+                        <Label text="E-mail :" GridPane.rowIndex="2" />
+                        <Label text="Phone :" GridPane.rowIndex="3" />
+                        <TextField fx:id="tutorId" GridPane.columnIndex="1" />
+                        <TextField fx:id="tutorName" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <TextField fx:id="tutorEmail" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <TextField fx:id="tutorPhone" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                     </children>
+                  </GridPane>
+                  <Button fx:id="addTutorButton" layoutX="400.0" layoutY="258.0" mnemonicParsing="false" onAction="#addTutorButtonClicked" prefHeight="25.0" prefWidth="80.0" text="Add Tutor" />
+                  <Button layoutX="296.0" layoutY="258.0" mnemonicParsing="false" onAction="#cancelAddTutorButtonClicked" prefHeight="25.0" prefWidth="80.0" text="Cancel" />
+               </children>
+            </Pane>
+            <Pane fx:id="editTutorPane2" prefHeight="327.0" prefWidth="600.0" visible="false">
+               <children>
+                  <GridPane layoutX="168.0" layoutY="32.0" prefHeight="218.0" prefWidth="314.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="118.0" minWidth="10.0" prefWidth="74.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="225.0" minWidth="10.0" prefWidth="225.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Label text="Tutor Id :" />
+                        <Label text="Name :" GridPane.rowIndex="1" />
+                        <Label text="E-mail :" GridPane.rowIndex="2" />
+                        <Label text="Phone :" GridPane.rowIndex="3" />
+                        <TextField fx:id="editTutorId" GridPane.columnIndex="1" />
+                        <TextField fx:id="editTutorName" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <TextField fx:id="editTutorEmail" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <TextField fx:id="editTutorPhone" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                     </children>
+                  </GridPane>
+                  <Button fx:id="addTutorButton1" layoutX="400.0" layoutY="258.0" mnemonicParsing="false" onAction="#updateTutorButtonClicked" prefHeight="25.0" prefWidth="80.0" text="Update Tutor" />
+                  <Button layoutX="296.0" layoutY="258.0" mnemonicParsing="false" onAction="#cancelEditTutorButtonClicked" prefHeight="25.0" prefWidth="80.0" text="Cancel" />
+               </children>
+            </Pane>
+            <Pane fx:id="editTutorPane1" prefHeight="327.0" prefWidth="600.0" visible="false">
+               <children>
+                  <GridPane layoutX="168.0" layoutY="32.0" prefHeight="218.0" prefWidth="314.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="118.0" minWidth="10.0" prefWidth="74.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="225.0" minWidth="10.0" prefWidth="225.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Label text="Tutor Id :" />
+                        <TextField fx:id="editTutorId1" GridPane.columnIndex="1" />
+                     </children>
+                  </GridPane>
+                  <Button fx:id="addTutorButton11" layoutX="400.0" layoutY="100.0" mnemonicParsing="false" onAction="#editTutorContinueButtonClicked" prefHeight="25.0" prefWidth="80.0" text="Continue..." />
+                  <Button layoutX="296.0" layoutY="100.0" mnemonicParsing="false" onAction="#cancelEditTutorButtonClicked" prefHeight="25.0" prefWidth="80.0" text="Cancel" />
+               </children>
+            </Pane>
+            <Pane fx:id="displayYearListPane" prefHeight="330.0" prefWidth="600.0" visible="false">
+               <children>
+                  <RadioButton fx:id="year2Radio" layoutX="160.0" layoutY="50.0" mnemonicParsing="false" text="Year 2">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="year" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <RadioButton fx:id="year3Radio" layoutX="240.0" layoutY="50.0" mnemonicParsing="false" text="Year 3" toggleGroup="$year" />
+                  <RadioButton fx:id="year4Radio" layoutX="320.0" layoutY="50.0" mnemonicParsing="false" text="Year 4" toggleGroup="$year" />
+                  <RadioButton fx:id="allYearsRadio" layoutX="400.0" layoutY="50.0" mnemonicParsing="false" text="All" toggleGroup="$year" />
+                  <Button layoutX="370.0" layoutY="100.0" mnemonicParsing="false" onAction="#displayButtonClicked" prefWidth="60.0" text="Display" />
+                  <Button layoutX="280.0" layoutY="100.0" mnemonicParsing="false" onAction="#displayStudentListBackButtonClicked" prefWidth="60.0" text="Back" />
+               </children>
+            </Pane>
+            <Pane fx:id="groupFormationMainPane" prefHeight="330.0" prefWidth="600.0" visible="false">
+               <children>
+                  <Pane fx:id="groupPane2" layoutY="115.0" prefHeight="255.0" prefWidth="600.0" visible="false">
+                     <children>
+                        <Button layoutX="430.0" layoutY="225.0" mnemonicParsing="false" onAction="#makeGroupButtonClicked" text="Make Group" />
+                     </children>
+                  </Pane>
+                  <Label layoutX="161.0" layoutY="14.0" prefHeight="17.0" prefWidth="75.0" text="Group Name :" />
+                  <Label layoutX="161.0" layoutY="49.0" prefHeight="17.0" prefWidth="75.0" text="Group Size :" />
+                  <TextField fx:id="groupName" layoutX="250.0" layoutY="10.0" />
+                  <TextField fx:id="groupSize" layoutX="250.0" layoutY="45.0" />
+                  <Button fx:id="continueGroupButton" layoutX="334.0" layoutY="83.0" mnemonicParsing="false" onAction="#continueGroupButtonClicked" text="Continue" />
+                  <Button fx:id="cancelGroupButton" layoutX="250.0" layoutY="83.0" mnemonicParsing="false" onAction="#cancelGroupButtonClicked" prefHeight="25.0" prefWidth="65.0" text="Cancel" />
+               </children>
+            </Pane>
+            <Pane fx:id="displayaGroupPane" prefHeight="330.0" prefWidth="600.0">
+               <children>
+                  <Label layoutX="180.0" layoutY="50.0" text="Group Name :" />
+                  <TextField fx:id="getGroupName" layoutX="260.0" layoutY="45.0" />
+                  <Button layoutX="350.0" layoutY="80.0" mnemonicParsing="false" onAction="#displayGroupButtonClicked" text="Display" />
+                  <Button layoutX="270.0" layoutY="80.0" mnemonicParsing="false" onAction="#cancelDisplayButtonClicked" text="Cancel" />
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+   </center>
+</BorderPane>
